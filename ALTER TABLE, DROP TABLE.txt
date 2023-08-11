@@ -1,0 +1,30 @@
+desc pessoas;
+
+alter table pessoas
+add column profissao varchar(10);
+
+alter table pessoas
+drop column profissao;
+
+alter table pessoas
+add column profissao varchar(10) after nome;
+
+alter table pessoas
+add codigo int first;
+
+alter table pessoas
+modify column profissao varchar(20) not null default "";
+
+select * from pessoas;
+
+alter table gafanhotos
+rename to pessoas;
+
+alter table cursos
+add column id_curso int first;
+
+alter table cursos 
+add primary key(id_curso);
+
+alter table cursos
+modify id_curso int not null auto_increment;

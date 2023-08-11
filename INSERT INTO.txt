@@ -1,0 +1,10 @@
+insert into pessoas values
+('Maria','1960-05-20','F','60','1.58','Brasil');
+
+insert into pessoas values
+(default, 'Jurandir','1964-01-26','M','78','1.72','Inglaterra'),
+(default, 'Luciane','1978-06-08','F','60','1.58','Portugal'),
+(default, 'Sheila','1998-10-12','F','75','1.60','EUA'),
+(default, 'Pluto','2009-01-15','M','6','0.35','EUA');
+
+select * from pessoas;
