@@ -1,30 +1,28 @@
-desc pessoas;
+-- DESCRIBE
+DESCRIBE pessoas;
 
-alter table pessoas
-add column profissao varchar(10);
+-- ADD COLUMN
+ALTER TABLE pessoas ADD COLUMN profissao VARCHAR(10);
 
-alter table pessoas
-drop column profissao;
+-- DROP COLUMN
+ALTER TABLE pessoas DROP COLUMN profissao;
 
-alter table pessoas
-add column profissao varchar(10) after nome;
+-- ADD COLUMN AFTER
+ALTER TABLE pessoas ADD COLUMN profissao VARCHAR(10) AFTER nome;
 
-alter table pessoas
-add codigo int first;
+-- ADD COLUMN FIRST
+ALTER TABLE pessoas ADD COLUMN codigo INT FIRST;
 
-alter table pessoas
-modify column profissao varchar(20) not null default "";
+-- MODIFY COLUMN
+ALTER TABLE pessoas MODIFY COLUMN profissao VARCHAR(20) NOT NULL DEFAULT "";
 
-select * from pessoas;
+-- SELECT
+SELECT * FROM pessoas;
 
-alter table gafanhotos
-rename to pessoas;
+-- RENAME TABLE
+ALTER TABLE gafanhotos RENAME TO pessoas;
 
-alter table cursos
-add column id_curso int first;
-
-alter table cursos 
-add primary key(id_curso);
-
-alter table cursos
-modify id_curso int not null auto_increment;
+-- ADD COLUMN WITH CONSTRAINTS
+ALTER TABLE cursos ADD COLUMN id_curso INT FIRST;
+ALTER TABLE cursos ADD PRIMARY KEY(id_curso);
+ALTER TABLE cursos MODIFY id_curso INT NOT NULL AUTO_INCREMENT;
