@@ -1,92 +1,72 @@
-ORDER BY
-select * from cursos order by nome asc; 
-select * from cursos order by nome desc; 
+-- ORDER BY
+SELECT * FROM cursos ORDER BY nome ASC;
+SELECT * FROM cursos ORDER BY nome DESC;
 
-select nome, carga, ano from cursos order by nome;
-select nome, carga, ano from cursos order by ano, nome;
+SELECT nome, carga, ano FROM cursos ORDER BY nome;
+SELECT nome, carga, ano FROM cursos ORDER BY ano, nome;
 
-select * from cursos where ano = '2016' order by nome;
-select nome, descricao, carga from cursos where ano = '2016' order by nome;
-select nome, descricao, ano from cursos where ano <= 2015 order by ano, nome;
-select nome, descricao, ano from cursos where ano <> 2015 order by ano, nome;
+SELECT * FROM cursos WHERE ano = '2016' ORDER BY nome;
+SELECT nome, descricao, carga FROM cursos WHERE ano = '2016' ORDER BY nome;
+SELECT nome, descricao, ano FROM cursos WHERE ano <= 2015 ORDER BY ano, nome;
+SELECT nome, descricao, ano FROM cursos WHERE ano <> 2015 ORDER BY ano, nome;
 
-select * from cursos where ano between 2014 and 2016 order by ano desc, nome asc;
-select nome, descricao, ano from cursos where ano in (2014,2016) order by ano;
+SELECT * FROM cursos WHERE ano BETWEEN 2014 AND 2016 ORDER BY ano DESC, nome ASC;
+SELECT nome, descricao, ano FROM cursos WHERE ano IN (2014, 2016) ORDER BY ano;
 
-select * from cursos where carga > 35 and totaulas < 30;
-select * from cursos where carga > 35 or totaulas < 30;
+SELECT * FROM cursos WHERE carga > 35 AND totaulas < 30;
+SELECT * FROM cursos WHERE carga > 35 OR totaulas < 30;
 
-LIKE
-select * from cursos where nome like 'P%';
-select * from cursos where nome like '%A';
-select * from cursos where nome like '%A%';
-select * from cursos where nome not like '%A%';
-select * from cursos where nome like 'ph%p%';
+-- LIKE
+SELECT * FROM cursos WHERE nome LIKE 'P%';
+SELECT * FROM cursos WHERE nome LIKE '%A';
+SELECT * FROM cursos WHERE nome LIKE '%A%';
+SELECT * FROM cursos WHERE nome NOT LIKE '%A%';
+SELECT * FROM cursos WHERE nome LIKE 'ph%p%';
 
-DISTINCT
-select distinct nacionalidade from gafanhotos order by nacionalidade;
+-- DISTINCT
+SELECT DISTINCT nacionalidade FROM gafanhotos ORDER BY nacionalidade;
 
-FUNÇÕES DE AGREGAÇÕES
-select count(nome) from cursos;
-select count(*) from cursos where carga > 40;
-select max(carga) from cursos;
-select max(totaulas) from cursos where ano = '2016';
-select min(totaulas) from cursos where ano = '2016';
-select sum(totaulas) from cursos;
-select sum(totaulas) from cursos where ano = '2016';
-select avg(totaulas) from cursos;
-select avg(totaulas) from cursos cursos where ano = '2016';
+-- FUNÇÕES DE AGREGAÇÃO
+SELECT COUNT(nome) FROM cursos;
+SELECT COUNT(*) FROM cursos WHERE carga > 40;
+SELECT MAX(carga) FROM cursos;
+SELECT MAX(totaulas) FROM cursos WHERE ano = '2016';
+SELECT MIN(totaulas) FROM cursos WHERE ano = '2016';
+SELECT SUM(totaulas) FROM cursos;
+SELECT SUM(totaulas) FROM cursos WHERE ano = '2016';
+SELECT AVG(totaulas) FROM cursos;
+SELECT AVG(totaulas) FROM cursos WHERE ano = '2016';
 
-GROUP BY E HAVING
-select carga from cursos group by carga;
-select carga, count(nome) from cursos group by carga;
-select ano, count(*) from cursos group by ano having count(ano) >=5 order by count(*) desc;
-select carga, count(*) from cursos where ano > 2015 group by carga having carga > (select avg(carga) from cursos)
+-- GROUP BY E HAVING
+SELECT carga FROM cursos GROUP BY carga;
+SELECT carga, COUNT(nome) FROM cursos GROUP BY carga;
+SELECT ano, COUNT(*) FROM cursos GROUP BY ano HAVING COUNT(ano) >= 5 ORDER BY COUNT(*) DESC;
+SELECT carga, COUNT(*) FROM cursos WHERE ano > 2015 GROUP BY carga HAVING carga > (SELECT AVG(carga) FROM cursos);
 
-Exercícios de SELECT
-select * from gafanhotos where nascimento between '2000-01-01' and '2015-12-31';
-select * from gafanhotos where sexo = 'M' and profissao = 'Programador';
-select * from gafanhotos where sexo = 'F' and nacionalidade = 'Brasil' and nome like 'J%';
-select nome, nacionalidade from gafanhotos 
-where sexo = 'M' and nome like '%Silva%' and nacionalidade <> 'Brasil' and peso < 100;
-select max(altura) from gafanhotos where sexo = 'M' and nacionalidade = 'Brasil';
-select avg(peso) from gafanhotos;
-select min(peso) from gafanhotos where sexo = 'F' and nacionalidade <> 'Brasil' and nascimento between '1990-01-01' and '2000-12-31';
-select * from gafanhotos where sexo = 'F' and altura > '1.90';
-select profissao, count(*) from gafanhotos group by profissao;
+-- Exercícios de SELECT
+SELECT * FROM gafanhotos WHERE nascimento BETWEEN '2000-01-01' AND '2015-12-31';
+SELECT * FROM gafanhotos WHERE sexo = 'M' AND profissao = 'Programador';
+SELECT * FROM gafanhotos WHERE sexo = 'F' AND nacionalidade = 'Brasil' AND nome LIKE 'J%';
+SELECT nome, nacionalidade FROM gafanhotos WHERE sexo = 'M' AND nome LIKE '%Silva%' AND nacionalidade <> 'Brasil' AND peso < 100;
+SELECT MAX(altura) FROM gafanhotos WHERE sexo = 'M' AND nacionalidade = 'Brasil';
+SELECT AVG(peso) FROM gafanhotos;
+SELECT MIN(peso) FROM gafanhotos WHERE sexo = 'F' AND nacionalidade <> 'Brasil' AND nascimento BETWEEN '1990-01-01' AND '2000-12-31';
+SELECT * FROM gafanhotos WHERE sexo = 'F' AND altura > 1.90;
+SELECT profissao, COUNT(*) FROM gafanhotos GROUP BY profissao;
 
-select sexo, count(*) from gafanhotos where nascimento > '2005-01-01' group by sexo ;
-select nacionalidade, count(*) from gafanhotos 
-where nacionalidade <> 'Brasil' 
-group by nacionalidade 
-having count(*) > '3';
+SELECT sexo, COUNT(*) FROM gafanhotos WHERE nascimento > '2005-01-01' GROUP BY sexo;
+SELECT nacionalidade, COUNT(*) FROM gafanhotos WHERE nacionalidade <> 'Brasil' GROUP BY nacionalidade HAVING COUNT(*) > 3;
 
-select altura, count(*) from gafanhotos 
-where peso > '100' 
-group by altura 
-having altura > (select avg(altura) from gafanhotos);
+SELECT altura, COUNT(*) FROM gafanhotos WHERE peso > 100 GROUP BY altura HAVING altura > (SELECT AVG(altura) FROM gafanhotos);
 
-select gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano 
-from gafanhotos join cursos;
+SELECT gafanhotos.nome, gafanhotos.cursopreferido, cursos.nome, cursos.ano FROM gafanhotos JOIN cursos;
 
-select gafanhotos.nome, cursos.nome, cursos.ano 
-from gafanhotos join cursos on cursos.idcurso = gafanhotos.cursopreferido;
+SELECT gafanhotos.nome, cursos.nome, cursos.ano FROM gafanhotos JOIN cursos ON cursos.idcurso = gafanhotos.cursopreferido;
 
-select gafanhotos.nome, cursos.nome, cursos.ano 
-from gafanhotos inner join cursos on cursos.idcurso = gafanhotos.cursopreferido
-order by gafanhotos.nome;
+SELECT gafanhotos.nome, cursos.nome, cursos.ano FROM gafanhotos INNER JOIN cursos ON cursos.idcurso = gafanhotos.cursopreferido ORDER BY gafanhotos.nome;
 
-select g.nome, c.nome, c.ano 
-from gafanhotos as g inner join cursos as c 
-on c.idcurso = g.cursopreferido
-order by g.nome;
+SELECT g.nome, c.nome, c.ano FROM gafanhotos AS g INNER JOIN cursos AS c ON c.idcurso = g.cursopreferido ORDER BY g.nome;
 
-select g.nome, c.nome, c.ano 
-from gafanhotos as g left join cursos as c 
-on c.idcurso = g.cursopreferido;
+SELECT g.nome, c.nome, c.ano FROM gafanhotos AS g LEFT JOIN cursos AS c ON c.idcurso = g.cursopreferido;
 
-select g.nome, c.nome, c.ano 
-from gafanhotos as g right join cursos as c 
-on c.idcurso = g.cursopreferido;
-
-
+SELECT g.nome, c.nome, c.ano FROM gafanhotos AS g RIGHT JOIN cursos AS c ON c.idcurso = g.cursopreferido;
