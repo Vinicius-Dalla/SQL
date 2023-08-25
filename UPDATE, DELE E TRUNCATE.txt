@@ -1,9 +1,12 @@
-update cursos set nome = 'HTML5' where id_curso = '1'; 
-update cursos set nome = 'PHP', ano = '2015' where id_curso = '4';
-update cursos set nome = 'Java', ano = '2015', carga = '40' where id_curso = '5' limit 1;
+-- UPDATE
+UPDATE cursos SET nome = 'HTML5' WHERE id_curso = '1';
+UPDATE cursos SET nome = 'PHP', ano = '2015' WHERE id_curso = '4';
+UPDATE cursos SET nome = 'Java', ano = '2015', carga = '40' WHERE id_curso = '5' LIMIT 1;
 
-delete from cursos where id_curso = '8';
-delete from cursos where id_curso = '9';
-delete from cursos where id_curso = '10';
+-- DELETE
+DELETE FROM cursos WHERE id_curso = '8';
+DELETE FROM cursos WHERE id_curso = '9';
+DELETE FROM cursos WHERE id_curso = '10';
 
-truncate table cursos;
+-- TRUNCATE
+TRUNCATE TABLE cursos;
