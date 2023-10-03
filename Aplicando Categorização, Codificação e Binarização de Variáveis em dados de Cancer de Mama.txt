@@ -1,3 +1,5 @@
+Aplicando Categorização, Codificação  e Binarização de Variáveis em uma base de dados de Cancêr de Mama.
+
 SELECT * FROM cancer_mama.tb_dados;
 
 SELECT COUNT(*) FROM cancer_mama.TB_DADOS;
