@@ -1,3 +1,5 @@
+Realização de alguns SELECTs com o intuito de treinar o SQL. Foi utilizado uma base de dados de Navios Cruzeis.
+
 SELECT * FROM navios_cruzeiros.TB_NAVIOS;
 
 SELECT nome_navio, mes_ano FROM navios_cruzeiros.TB_NAVIOS;
